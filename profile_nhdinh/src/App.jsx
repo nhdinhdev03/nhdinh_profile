@@ -86,9 +86,11 @@ const MusicPlayer = memo(function MusicPlayer({
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState("0:00");
   const [totalTime, setTotalTime] = useState("0:00");
+  const [playerReady, setPlayerReady] = useState(false);
 
   const playerRef = useRef(null);
   const intervalRef = useRef(null);
+  const playImmediatelyRef = useRef(false);
 
   const formatTime = useCallback((sec) => {
     if (!sec || isNaN(sec)) return "0:00";
@@ -97,21 +99,38 @@ const MusicPlayer = memo(function MusicPlayer({
     return `${m}:${s.toString().padStart(2, "0")}`;
   }, []);
 
-  // Handle immediate play when user clicks
+  // Handle immediate play when user clicks - ensure player is ready first
   useEffect(() => {
-    if (playImmediately && playerRef.current) {
-      playerRef.current.unMute();
-      playerRef.current.playVideo();
+    if (playImmediately) {
+      playImmediatelyRef.current = true;
+      if (playerReady && playerRef.current) {
+        try {
+          playerRef.current.unMute();
+          playerRef.current.playVideo();
+        } catch (e) {
+          console.log("Play error:", e);
+        }
+      }
     }
-  }, [playImmediately]);
+  }, [playImmediately, playerReady]);
 
   // Handle auto-play only on desktop after entering
   useEffect(() => {
-    if (shouldPlay && playerRef.current && !isMobile && !playImmediately) {
-      playerRef.current.unMute();
-      playerRef.current.playVideo();
+    if (
+      shouldPlay &&
+      playerRef.current &&
+      !isMobile &&
+      !playImmediately &&
+      playerReady
+    ) {
+      try {
+        playerRef.current.unMute();
+        playerRef.current.playVideo();
+      } catch (e) {
+        console.log("Play error:", e);
+      }
     }
-  }, [shouldPlay, isMobile, playImmediately]);
+  }, [shouldPlay, isMobile, playImmediately, playerReady]);
 
   useEffect(() => {
     let isMounted = true;
@@ -134,6 +153,17 @@ const MusicPlayer = memo(function MusicPlayer({
           onReady: (e) => {
             const dur = e.target.getDuration();
             setTotalTime(formatTime(dur));
+            setPlayerReady(true);
+
+            // If play was requested before player was ready, play now
+            if (playImmediatelyRef.current) {
+              try {
+                e.target.unMute();
+                e.target.playVideo();
+              } catch (err) {
+                console.log("Auto play error:", err);
+              }
+            }
 
             intervalRef.current = setInterval(() => {
               if (!playerRef.current) return;
