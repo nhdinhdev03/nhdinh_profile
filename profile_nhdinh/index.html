@@ -3,142 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nhdinh - Profile</title>
+    <title>nhdinh profile</title>
+
+    <!-- Font Awesome (icon) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-      <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div id="enter-screen">
-      <div class="enter-box">
-        <h1>Click to Enter</h1>
-      </div>
-    </div>
-    <!-- Background -->
-    <div class="background"></div>
-    <div class="overlay"></div>
+    <!-- React mount -->
+    <div id="root"></div>
 
-    <!-- Main Container -->
-    <div class="container">
-      <!-- Avatar Section -->
-      <div class="avatar-section">
-        <div class="avatar-wrapper">
-          <div class="halo"></div>
-          <div class="wings wing-left">🕊️</div>
-          <img
-            src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/642791975_1244247904509826_1166272802171148123_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEdkQg3JlcZTphHqzYphjAaucuEUnhZF6W5y4RSeFkXpeEe9gziE9sp5oVL97XeJbVDi0CaZcblhhp8RXx_M5PC&_nc_ohc=dOYhvdvIIkkQ7kNvwEavuIK&_nc_oc=AdpCi3tAR_2UmuP01GhzJP0rt-n-Q0rMEIwwfNMhN3z_gUVPOMndP7REMcRCELAQ74GN2PHZZXaR8V0UPaJjTzM4&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=tEiYwnos40I1tPJiZjx4aw&_nc_ss=7a3a8&oh=00_Af3m_cff0-RWQvP9j_0276hKEUtjZNPrzvVAa_B-Sq4oKg&oe=69EEB4E2"
-            alt="Avatar"
-            class="avatar"
-          />
-          <div class="wings wing-right">🕊️</div>
-          <div class="sparkles sparkle-1">✨</div>
-          <div class="sparkles sparkle-2">✨</div>
-          <div class="sparkles sparkle-3">✨</div>
-        </div>
-        <h1 class="username">nhdinh</h1>
-      </div>
-
-      <!-- Status Box -->
-      <div class="status-box">
-        <img
-          src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/642791975_1244247904509826_1166272802171148123_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEdkQg3JlcZTphHqzYphjAaucuEUnhZF6W5y4RSeFkXpeEe9gziE9sp5oVL97XeJbVDi0CaZcblhhp8RXx_M5PC&_nc_ohc=dOYhvdvIIkkQ7kNvwEavuIK&_nc_oc=AdpCi3tAR_2UmuP01GhzJP0rt-n-Q0rMEIwwfNMhN3z_gUVPOMndP7REMcRCELAQ74GN2PHZZXaR8V0UPaJjTzM4&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=tEiYwnos40I1tPJiZjx4aw&_nc_ss=7a3a8&oh=00_Af3m_cff0-RWQvP9j_0276hKEUtjZNPrzvVAa_B-Sq4oKg&oe=69EEB4E2"
-          alt="Status Avatar"
-          class="status-avatar"
-        />
-        <div class="status-info">
-          <div class="status-name">
-            Nguyễn Hoàng Dinh
-            <i class="fas fa-check-circle verified"></i>
-          </div>
-          <div class="status-time">last seen 1 minutes ago</div>
-        </div>
-      </div>
-
-      <!-- Social Icons -->
-      <div class="social-section">
-        <a
-          href="https://www.youtube.com"
-          class="social-icon"
-          title="YouTube"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fab fa-youtube"> </i>
-        </a>
-        <a
-          href="https://discord.gg/hU39VSy5Bp"
-          class="social-icon"
-          title="Discord"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fab fa-discord"></i>
-        </a>
-        <a
-          href="https://www.instagram.com/nhdinh.dev"
-          class="social-icon"
-          title="Instagram"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a
-          href="https://github.com/nhdinhdev03"
-          class="social-icon"
-          title="GitHub"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-
-      <!-- Music Player -->
-      <div class="music-player">
-        <!-- Hidden YouTube Player -->
-        <div id="youtube-player" style="display: none"></div>
-
-        <div class="player-header">
-          <img
-            src="https://i.ytimg.com/vi/zloQza64-sM/maxresdefault.jpg"
-            alt="Song Cover"
-            class="song-cover"
-          />
-          <div class="song-info">
-            <h3>ANH ĐÃ KHÔNG BIẾT CÁCH YÊU EM</h3>
-            <p>YouTube Music</p>
-          </div>
-        </div>
-
-        <div class="progress-container">
-          <div class="progress-bar">
-            <div class="progress"></div>
-          </div>
-          <div class="time-info">
-            <span class="current-time">0:00</span>
-            <span class="total-time">2:49</span>
-          </div>
-        </div>
-
-        <div class="controls">
-          <button class="control-btn prev-btn">
-            <i class="fas fa-step-backward"></i>
-          </button>
-          <button class="control-btn play">
-            <i class="fas fa-play"></i>
-          </button>
-          <button class="control-btn next-btn">
-            <i class="fas fa-step-forward"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Vite entry -->
+    <script type="module" src="/src/main.jsx"></script>
   </body>
-  <script src="script.js"></script>
 </html>
