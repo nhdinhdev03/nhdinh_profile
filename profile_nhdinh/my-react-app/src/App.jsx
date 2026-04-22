@@ -57,8 +57,7 @@ function EnterScreen({ onEnter }) {
       ))}
 
       <div className="enter-box">
-        <div className="enter-title">Click to Enter</div>
-        <div className="enter-sub">Press anywhere to continue</div>
+        <div className="enter-title">Click on the screen</div>
       </div>
     </div>
   );
