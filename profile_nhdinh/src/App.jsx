@@ -1,6 +1,14 @@
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import "./App.css";
 
+// Mobile detection utility
+const isMobileDevice = () => {
+  if (typeof window === "undefined") return false;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent,
+  );
+};
+
 const Snowflake = memo(function Snowflake({ id, onDone }) {
   const [style] = useState(() => ({
     position: "fixed",
@@ -23,7 +31,7 @@ const Snowflake = memo(function Snowflake({ id, onDone }) {
   return <div style={style}>❄</div>;
 });
 
-const EnterScreen = memo(function EnterScreen({ onEnter }) {
+const EnterScreen = memo(function EnterScreen({ onEnter, onPlayMusic }) {
   const [animating, setAnimating] = useState(false);
   const [ripples, setRipples] = useState([]);
 
@@ -42,9 +50,12 @@ const EnterScreen = memo(function EnterScreen({ onEnter }) {
 
       setRipples((prev) => [...prev, ripple]);
 
+      // Play music immediately on click
+      onPlayMusic && onPlayMusic();
+
       setTimeout(() => onEnter(), 900);
     },
-    [animating, onEnter],
+    [animating, onEnter, onPlayMusic],
   );
 
   return (
@@ -66,7 +77,11 @@ const EnterScreen = memo(function EnterScreen({ onEnter }) {
   );
 });
 
-const MusicPlayer = memo(function MusicPlayer({ shouldPlay }) {
+const MusicPlayer = memo(function MusicPlayer({
+  shouldPlay,
+  playImmediately,
+  isMobile,
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState("0:00");
@@ -82,12 +97,21 @@ const MusicPlayer = memo(function MusicPlayer({ shouldPlay }) {
     return `${m}:${s.toString().padStart(2, "0")}`;
   }, []);
 
+  // Handle immediate play when user clicks
   useEffect(() => {
-    if (shouldPlay && playerRef.current) {
+    if (playImmediately && playerRef.current) {
       playerRef.current.unMute();
       playerRef.current.playVideo();
     }
-  }, [shouldPlay]);
+  }, [playImmediately]);
+
+  // Handle auto-play only on desktop after entering
+  useEffect(() => {
+    if (shouldPlay && playerRef.current && !isMobile && !playImmediately) {
+      playerRef.current.unMute();
+      playerRef.current.playVideo();
+    }
+  }, [shouldPlay, isMobile, playImmediately]);
 
   useEffect(() => {
     let isMounted = true;
@@ -321,6 +345,8 @@ const SocialLinks = memo(function SocialLinks() {
 export default function App() {
   const [entered, setEntered] = useState(false);
   const [snowflakes, setSnowflakes] = useState([]);
+  const [playMusic, setPlayMusic] = useState(false);
+  const [isMobile] = useState(isMobileDevice());
   const snowIdRef = useRef(0);
 
   // Spawn snowflakes
@@ -340,6 +366,10 @@ export default function App() {
     setEntered(true);
   }, []);
 
+  const handlePlayMusic = useCallback(() => {
+    setPlayMusic(true);
+  }, []);
+
   return (
     <>
       {/* Snowflakes */}
@@ -348,7 +378,9 @@ export default function App() {
       ))}
 
       {/* Enter screen */}
-      {!entered && <EnterScreen onEnter={handleEnter} />}
+      {!entered && (
+        <EnterScreen onEnter={handleEnter} onPlayMusic={handlePlayMusic} />
+      )}
 
       {/* Background layers */}
       <div className="background" />
@@ -359,7 +391,11 @@ export default function App() {
         <AvatarSection />
         <StatusBox />
         <SocialLinks />
-        <MusicPlayer shouldPlay={entered} />
+        <MusicPlayer
+          shouldPlay={entered}
+          playImmediately={playMusic}
+          isMobile={isMobile}
+        />
       </div>
     </>
   );
