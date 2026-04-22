@@ -481,7 +481,7 @@ export default function App() {
         <div className="social-section">
           {[
             {
-              href: "https://www.youtube.com",
+              href: "https://www.youtube.com/@nhdinh.dev03",
               icon: "fab fa-youtube",
               title: "YouTube",
             },
