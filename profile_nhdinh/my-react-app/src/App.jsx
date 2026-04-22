@@ -480,11 +480,11 @@ export default function App() {
         {/* Social icons */}
         <div className="social-section">
           {[
-            {
-              href: "https://www.youtube.com/@nhdinh.dev03",
-              icon: "fab fa-youtube",
-              title: "YouTube",
-            },
+            // {
+            //   href: "https://www.youtube.com/@nhdinh.dev03",
+            //   icon: "fab fa-youtube",
+            //   title: "YouTube",
+            // },
             {
               href: "https://discord.gg/hU39VSy5Bp",
               icon: "fab fa-discord",
