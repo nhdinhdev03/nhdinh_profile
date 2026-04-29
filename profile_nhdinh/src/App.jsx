@@ -41,6 +41,9 @@ const EnterScreen = memo(function EnterScreen({ onEnter, onPlayMusic }) {
 
       setAnimating(true);
 
+      // Play music first (user gesture for mobile autoplay)
+      onPlayMusic && onPlayMusic();
+
       const rect = e.currentTarget.getBoundingClientRect();
       const ripple = {
         x: e.clientX - rect.left,
@@ -49,9 +52,6 @@ const EnterScreen = memo(function EnterScreen({ onEnter, onPlayMusic }) {
       };
 
       setRipples((prev) => [...prev, ripple]);
-
-      // Play music immediately on click
-      onPlayMusic && onPlayMusic();
 
       setTimeout(() => onEnter(), 900);
     },
