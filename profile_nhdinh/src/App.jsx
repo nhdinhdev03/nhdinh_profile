@@ -294,7 +294,7 @@ const MusicPlayer = memo(function MusicPlayer({
 
 const AvatarSection = memo(function AvatarSection() {
   const avatarUrl =
-    "https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/642791975_1244247904509826_1166272802171148123_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEdkQg3JlcZTphHqzYphjAaucuEUnhZF6W5y4RSeFkXpeEe9gziE9sp5oVL97XeJbVDi0CaZcblhhp8RXx_M5PC&_nc_ohc=dOYhvdvIIkkQ7kNvwEavuIK&_nc_oc=AdpCi3tAR_2UmuP01GhzJP0rt-n-Q0rMEIwwfNMhN3z_gUVPOMndP7REMcRCELAQ74GN2PHZZXaR8V0UPaJjTzM4&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=tEiYwnos40I1tPJiZjx4aw&_nc_ss=7a3a8&oh=00_Af3m_cff0-RWQvP9j_0276hKEUtjZNPrzvVAa_B-Sq4oKg&oe=69EEB4E2";
+    "https://scontent.fvca3-1.fna.fbcdn.net/v/t39.30808-6/642791975_1244247904509826_1166272802171148123_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=0-6uULu-uscQ7kNvwF635Aj&_nc_oc=AdoAdy0SpFhtxnQXZ9nH-g_D-0c0jqFuk5zrfDnPMiGaU0S5dVuoLvHTWRf47wuzPivTd1QqPfoscMLAKFVXAEpY&_nc_zt=23&_nc_ht=scontent.fvca3-1.fna&_nc_gid=A96zyWuzc2gxPQJnOFN41Q&_nc_ss=7b2a8&oh=00_Af0ewJwHc3RBDqbJTSB9XY2sGVuecPw58K4_Xhmcl4H6hQ&oe=69F908A2";
 
   return (
     <div className="avatar-section">
@@ -314,7 +314,7 @@ const AvatarSection = memo(function AvatarSection() {
 
 const StatusBox = memo(function StatusBox() {
   const avatarUrl =
-    "https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-6/642791975_1244247904509826_1166272802171148123_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEdkQg3JlcZTphHqzYphjAaucuEUnhZF6W5y4RSeFkXpeEe9gziE9sp5oVL97XeJbVDi0CaZcblhhp8RXx_M5PC&_nc_ohc=dOYhvdvIIkkQ7kNvwEavuIK&_nc_oc=AdpCi3tAR_2UmuP01GhzJP0rt-n-Q0rMEIwwfNMhN3z_gUVPOMndP7REMcRCELAQ74GN2PHZZXaR8V0UPaJjTzM4&_nc_zt=23&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=tEiYwnos40I1tPJiZjx4aw&_nc_ss=7a3a8&oh=00_Af3m_cff0-RWQvP9j_0276hKEUtjZNPrzvVAa_B-Sq4oKg&oe=69EEB4E2";
+    "https://scontent.fvca3-1.fna.fbcdn.net/v/t39.30808-6/642791975_1244247904509826_1166272802171148123_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=0-6uULu-uscQ7kNvwF635Aj&_nc_oc=AdoAdy0SpFhtxnQXZ9nH-g_D-0c0jqFuk5zrfDnPMiGaU0S5dVuoLvHTWRf47wuzPivTd1QqPfoscMLAKFVXAEpY&_nc_zt=23&_nc_ht=scontent.fvca3-1.fna&_nc_gid=A96zyWuzc2gxPQJnOFN41Q&_nc_ss=7b2a8&oh=00_Af0ewJwHc3RBDqbJTSB9XY2sGVuecPw58K4_Xhmcl4H6hQ&oe=69F908A2";
 
   return (
     <div className="status-box">
